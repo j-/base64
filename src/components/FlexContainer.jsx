@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const FlexContainer = ({
+	style,
 	alignContent,
 	alignItems,
 	flexDirection,
@@ -8,7 +9,8 @@ const FlexContainer = ({
 	justifyContent,
 	...props
 }) => {
-	const style = {
+	const newStyle = {
+		...style,
 		display: 'flex',
 		alignContent,
 		alignItems,
@@ -16,10 +18,11 @@ const FlexContainer = ({
 		flexWrap,
 		justifyContent,
 	};
-	return <div style={ style } { ...props } />;
+	return <div style={ newStyle } { ...props } />;
 };
 
 FlexContainer.propTypes = {
+	style: PropTypes.object,
 	alignContent: PropTypes.oneOf([
 		'center',
 		'flex-end',

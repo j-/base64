@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const FlexItem = ({
+	style,
 	alignSelf,
 	flexBasis,
 	flexGrow,
@@ -8,17 +9,19 @@ const FlexItem = ({
 	flexOrder,
 	...props
 }) => {
-	const style = {
+	const newStyle = {
+		...style,
 		alignSelf,
 		flexBasis,
 		flexGrow,
 		flexShrink,
 		flexOrder,
 	};
-	return <div style={ style } { ...props } />;
+	return <div style={ newStyle } { ...props } />;
 };
 
 FlexItem.propTypes = {
+	style: PropTypes.object,
 	alignSelf: PropTypes.oneOf([
 		'auto',
 		'baseline',
