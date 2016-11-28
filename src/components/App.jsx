@@ -4,7 +4,7 @@ import Convert from './ConvertContainer';
 const App = () => (
 	<div className="app">
 		<h1>Base 64</h1>
-		<Convert />
+		<Convert index={ 0 } />
 	</div>
 );
 

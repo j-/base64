@@ -3,14 +3,14 @@ import {
 	SET_BASE64,
 } from './types';
 
-export const setText = (value) => ({
+export const setText = (index, value) => ({
 	type: SET_TEXT,
-	index: 0,
+	index,
 	value,
 });
 
-export const setBase64 = (value) => ({
+export const setBase64 = (index, value) => ({
 	type: SET_BASE64,
-	index: 0,
+	index,
 	value,
 });

@@ -15,19 +15,19 @@ import {
 	setBase64,
 } from '../store/actions';
 
-const mapStateToProps = (state) => ({
-	valueText: getValueText(state, 0),
-	valueBase64: getValueBase64(state, 0),
-	calculatedText: getCalculatedText(state, 0),
-	calculatedBase64: getCalculatedBase64(state, 0),
-	invalidText: getInvalidText(state, 0),
-	invalidBase64: getInvalidBase64(state, 0),
+const mapStateToProps = (state, { index }) => ({
+	valueText: getValueText(state, index),
+	valueBase64: getValueBase64(state, index),
+	calculatedText: getCalculatedText(state, index),
+	calculatedBase64: getCalculatedBase64(state, index),
+	invalidText: getInvalidText(state, index),
+	invalidBase64: getInvalidBase64(state, index),
 });
 
-const mapDispatchToProps = {
-	setText,
-	setBase64,
-};
+const mapDispatchToProps = (dispatch, { index }) => ({
+	setText: (value) => dispatch(setText(index, value)),
+	setBase64: (value) => dispatch(setBase64(index, value)),
+});
 
 export default connect(
 	mapStateToProps,
