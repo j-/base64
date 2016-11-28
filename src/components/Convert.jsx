@@ -13,8 +13,8 @@ export default class Convert extends Component {
 		const toValue = atob(fromValue);
 		return (
 			<div>
-				<textarea readOnly value={ fromValue } />
-				<textarea readOnly value={ toValue } />
+				<textarea className="pt-input pt-intent-primary" readOnly value={ fromValue } />
+				<textarea className="pt-input" readOnly value={ toValue } />
 			</div>
 		);
 	}
