@@ -1,6 +1,7 @@
 import {
 	SET_TEXT,
 	SET_BASE64,
+	REMOVE_LIST_ITEM,
 } from './types';
 
 import handler from './conversion';
@@ -10,10 +11,16 @@ const DEFAULT_STATE = [];
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_TEXT:
-		case SET_BASE64:
+		case SET_BASE64: {
 			const result = [...state];
 			result[action.index] = handler(state[action.index], action);
 			return result;
+		}
+		case REMOVE_LIST_ITEM: {
+			const result = [...state];
+			result.splice(action.index, 1);
+			return result;
+		}
 		default:
 			return state;
 	}
