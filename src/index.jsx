@@ -1,4 +1,5 @@
 import '@blueprintjs/core/dist/blueprint';
+import './styles';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
