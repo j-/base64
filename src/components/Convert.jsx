@@ -7,8 +7,6 @@ export default class Convert extends Component {
 		this.state = {
 			valueText: null,
 			valueBase64: null,
-			calculateText: false,
-			calculateBase64: false,
 			calculatedText: null,
 			calculatedBase64: null,
 			invalidText: false,
@@ -29,8 +27,6 @@ export default class Convert extends Component {
 		this.setState({
 			valueText: valueText,
 			valueBase64: null,
-			calculateText: false,
-			calculateBase64: calculatedBase64 !== '',
 			calculatedText: null,
 			calculatedBase64: calculatedBase64,
 			invalidText: didError,
@@ -49,8 +45,6 @@ export default class Convert extends Component {
 		this.setState({
 			valueText: null,
 			valueBase64: valueBase64,
-			calculateText: calculatedText !== '',
-			calculateBase64: false,
 			calculatedText: calculatedText,
 			calculatedBase64: null,
 			invalidText: false,
@@ -62,8 +56,6 @@ export default class Convert extends Component {
 		const {
 			valueText,
 			valueBase64,
-			calculateText,
-			calculateBase64,
 			calculatedText,
 			calculatedBase64,
 			invalidText,
@@ -71,16 +63,16 @@ export default class Convert extends Component {
 		} = this.state;
 		return (
 			<DualText
-				valueLeft={ calculateText ? calculatedText : valueText }
+				valueLeft={ calculatedText || valueText }
 				onChangeLeft={ this.setConversionText }
 				placeholderLeft="Enter text&hellip;"
 
-				valueRight={ calculateBase64 ? calculatedBase64 : valueBase64 }
+				valueRight={ calculatedBase64 || valueBase64 }
 				onChangeRight={ this.setConversionBase64 }
 				placeholderRight="Enter base 64&hellip;"
 
-				primaryLeft={ calculateBase64 }
-				primaryRight={ calculateText }
+				primaryLeft={ calculatedBase64 }
+				primaryRight={ calculatedText }
 
 				dangerLeft={ invalidText }
 				dangerRight={ invalidBase64 }
