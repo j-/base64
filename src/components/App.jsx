@@ -1,5 +1,5 @@
 import React from 'react';
-import Convert from './Convert';
+import Convert from './ConvertContainer';
 
 const App = () => (
 	<div className="app">
