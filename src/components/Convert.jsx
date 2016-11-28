@@ -63,18 +63,17 @@ export default class Convert extends Component {
 		} = this.state;
 		return (
 			<DualText
+				// Text props
 				valueLeft={ calculatedText || valueText }
 				onChangeLeft={ this.setConversionText }
 				placeholderLeft="Enter text&hellip;"
-
+				primaryLeft={ calculatedBase64 }
+				dangerLeft={ invalidText }
+				// Base 64 props
 				valueRight={ calculatedBase64 || valueBase64 }
 				onChangeRight={ this.setConversionBase64 }
 				placeholderRight="Enter base 64&hellip;"
-
-				primaryLeft={ calculatedBase64 }
 				primaryRight={ calculatedText }
-
-				dangerLeft={ invalidText }
 				dangerRight={ invalidBase64 }
 			/>
 		);
