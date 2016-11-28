@@ -5,61 +5,85 @@ export default class Convert extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			valueText: '',
-			valueBase64: '',
+			valueText: null,
+			valueBase64: null,
 			calculateText: false,
 			calculateBase64: false,
+			calculatedText: null,
+			calculatedBase64: null,
+			invalidText: false,
+			invalidBase64: false,
 		};
-		this.handleChangeText = this.handleChangeText.bind(this);
-		this.handleChangeBase64 = this.handleChangeBase64.bind(this);
+		this.setConversionText = this.setConversionText.bind(this);
+		this.setConversionBase64 = this.setConversionBase64.bind(this);
 	}
 
-	handleChangeText (valueText) {
+	setConversionText (valueText) {
+		let calculatedBase64;
+		let didError = false;
+		try {
+			calculatedBase64 = btoa(valueText);
+		} catch (err) {
+			didError = true;
+		}
 		this.setState({
-			valueText,
+			valueText: valueText,
+			valueBase64: null,
 			calculateText: false,
 			calculateBase64: true,
+			calculatedText: null,
+			calculatedBase64: calculatedBase64,
+			invalidText: didError,
+			invalidBase64: false,
 		});
 	}
 
-	handleChangeBase64 (valueBase64) {
+	setConversionBase64 (valueBase64) {
+		let calculatedText;
+		let didError = false;
+		try {
+			calculatedText = atob(valueBase64);
+		} catch (err) {
+			didError = true;
+		}
 		this.setState({
-			valueBase64,
+			valueText: null,
+			valueBase64: valueBase64,
 			calculateText: true,
 			calculateBase64: false,
+			calculatedText: calculatedText,
+			calculatedBase64: null,
+			invalidText: false,
+			invalidBase64: didError,
 		});
-	}
-
-	getValueText () {
-		if (this.state.calculateText) {
-			return atob(this.state.valueBase64);
-		}
-		return this.state.valueText;
-	}
-
-	getValueBase64 () {
-		if (this.state.calculateBase64) {
-			return btoa(this.state.valueText);
-		}
-		return this.state.valueBase64;
 	}
 
 	render () {
-		const valueText = this.getValueText();
-		const valueBase64 = this.getValueBase64();
-		const { calculateText, calculateBase64 } = this.state;
+		const {
+			valueText,
+			valueBase64,
+			calculateText,
+			calculateBase64,
+			calculatedText,
+			calculatedBase64,
+			invalidText,
+			invalidBase64,
+		} = this.state;
 		return (
 			<DualText
-				valueLeft={ valueText }
-				onChangeLeft={ this.handleChangeText }
+				valueLeft={ calculateText ? calculatedText : valueText }
+				onChangeLeft={ this.setConversionText }
 				placeholderLeft="Enter text&hellip;"
 
-				valueRight={ valueBase64 }
-				onChangeRight={ this.handleChangeBase64 }
+				valueRight={ calculateBase64 ? calculatedBase64 : valueBase64 }
+				onChangeRight={ this.setConversionBase64 }
 				placeholderRight="Enter base 64&hellip;"
 
 				primaryLeft={ calculateBase64 }
 				primaryRight={ calculateText }
+
+				dangerLeft={ invalidText }
+				dangerRight={ invalidBase64 }
 			/>
 		);
 	}
