@@ -5,6 +5,7 @@ const SingleText = ({
 	primary,
 	danger,
 	onChange,
+	value,
 	...props
 }) => {
 	const className = classNames('pt-input', {
@@ -15,6 +16,7 @@ const SingleText = ({
 		<textarea
 			className={ className }
 			onChange={ (e) => onChange(e.target.value) }
+			value={ value || '' }
 			{ ...props }
 		/>
 	);
@@ -24,6 +26,7 @@ SingleText.propTypes = {
 	primary: PropTypes.bool,
 	danger: PropTypes.bool,
 	onChange: PropTypes.func,
+	value: PropTypes.string,
 };
 
 SingleText.defaultProps = {
