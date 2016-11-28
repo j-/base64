@@ -7,7 +7,10 @@ const ConversionList = ({
 	const childElements = [];
 	for (let i = 0; i < count + 1; i++) {
 		childElements.push(
-			<Convert key={ i } index={ i } />
+			<div key={ i }>
+				<hr />
+				<Convert index={ i } />
+			</div>
 		);
 	}
 	return <div>{ childElements }</div>;
