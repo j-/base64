@@ -30,7 +30,7 @@ export default class Convert extends Component {
 			valueText: valueText,
 			valueBase64: null,
 			calculateText: false,
-			calculateBase64: true,
+			calculateBase64: calculatedBase64 !== '',
 			calculatedText: null,
 			calculatedBase64: calculatedBase64,
 			invalidText: didError,
@@ -49,7 +49,7 @@ export default class Convert extends Component {
 		this.setState({
 			valueText: null,
 			valueBase64: valueBase64,
-			calculateText: true,
+			calculateText: calculatedText !== '',
 			calculateBase64: false,
 			calculatedText: calculatedText,
 			calculatedBase64: null,
