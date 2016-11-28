@@ -1,18 +1,17 @@
 import React, { PropTypes } from 'react';
 import Convert from './ConvertContainer';
-import ConversionActions from './ConversionActions';
+import ConversionActions from './ConversionActionsContainer';
 
 const ConversionList = ({
 	count,
-	removeListItem,
 }) => {
 	const childElements = [];
 	for (let i = 0; i < count + 1; i++) {
 		childElements.push(
 			<div key={ i }>
 				<ConversionActions
+					index={ i }
 					showChildren={ i < count }
-					removeListItem={ () => removeListItem(i) }
 				/>
 				<Convert index={ i } />
 			</div>
@@ -23,7 +22,6 @@ const ConversionList = ({
 
 ConversionList.propTypes = {
 	count: PropTypes.number,
-	removeListItem: PropTypes.func.isRequired,
 };
 
 ConversionList.defaultProps = {
