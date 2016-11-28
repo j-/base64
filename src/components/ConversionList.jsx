@@ -7,9 +7,9 @@ const ConversionList = ({
 }) => {
 	const childElements = [];
 	for (let i = 0; i < count + 1; i++) {
-		childElements.push(
-			<div key={ i }>
-				<hr />
+		let removeButton = null;
+		if (i < count) {
+			removeButton = (
 				<button
 					type="button"
 					className="pt-button pt-minimal pt-icon-cross"
@@ -17,6 +17,13 @@ const ConversionList = ({
 				>
 					Remove
 				</button>
+			);
+		}
+		childElements.push(
+			<div key={ i }>
+				<div className="conversion-list-item-actions">
+					{ removeButton }
+				</div>
 				<Convert index={ i } />
 			</div>
 		);
