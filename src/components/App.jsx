@@ -1,7 +1,10 @@
 import React from 'react';
+import Convert from './Convert';
 
 const App = () => (
-	<div />
+	<div>
+		<Convert />
+	</div>
 );
 
 export default App;
