@@ -16,6 +16,7 @@ export default class Convert extends Component {
 			<DualText
 				valueLeft={ fromValue }
 				valueRight={ toValue }
+				primaryLeft
 			/>
 		);
 	}

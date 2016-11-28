@@ -6,12 +6,26 @@ const DualText = ({
 	valueRight,
 	onChangeLeft,
 	onChangeRight,
+	primaryLeft,
+	primaryRight,
+	dangerLeft,
+	dangerRight,
 	...props
 }) => {
 	return (
 		<div { ...props }>
-			<SingleText value={ valueLeft } onChange={ onChangeLeft } />
-			<SingleText value={ valueRight } onChange={ onChangeRight } />
+			<SingleText
+				value={ valueLeft }
+				onChange={ onChangeLeft }
+				primary={ primaryLeft }
+				danger={ dangerLeft }
+			/>
+			<SingleText
+				value={ valueRight }
+				onChange={ onChangeRight }
+				primary={ primaryRight }
+				danger={ dangerRight }
+			/>
 		</div>
 	);
 };
@@ -21,6 +35,10 @@ DualText.propTypes = {
 	valueRight: PropTypes.string,
 	onChangeLeft: PropTypes.func,
 	onChangeRight: PropTypes.func,
+	primaryLeft: PropTypes.bool,
+	primaryRight: PropTypes.bool,
+	dangerLeft: PropTypes.bool,
+	dangerRight: PropTypes.bool,
 };
 
 export default DualText;
