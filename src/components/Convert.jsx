@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DualText from './DualText';
 
 export default class Convert extends Component {
 	constructor (props) {
@@ -12,10 +13,10 @@ export default class Convert extends Component {
 		const { fromValue } = this.state;
 		const toValue = atob(fromValue);
 		return (
-			<div>
-				<textarea className="pt-input pt-intent-primary" readOnly value={ fromValue } />
-				<textarea className="pt-input" readOnly value={ toValue } />
-			</div>
+			<DualText
+				valueLeft={ fromValue }
+				valueRight={ toValue }
+			/>
 		);
 	}
 }
