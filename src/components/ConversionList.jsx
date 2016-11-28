@@ -1,6 +1,16 @@
 import React, { PropTypes } from 'react';
 import Convert from './ConvertContainer';
 
+const RemoveButton = (props) => (
+	<button
+		type="button"
+		className="pt-button pt-minimal pt-icon-cross"
+		{ ...props }
+	>
+		Remove
+	</button>
+);
+
 const ConversionList = ({
 	count,
 	removeListItem,
@@ -8,16 +18,9 @@ const ConversionList = ({
 	const childElements = [];
 	for (let i = 0; i < count + 1; i++) {
 		let removeButton = null;
+		// If this is not the last item in the list
 		if (i < count) {
-			removeButton = (
-				<button
-					type="button"
-					className="pt-button pt-minimal pt-icon-cross"
-					onClick={ () => removeListItem(i) }
-				>
-					Remove
-				</button>
-			);
+			removeButton = <RemoveButton onClick={ () => removeListItem(i) } />;
 		}
 		childElements.push(
 			<div key={ i }>
