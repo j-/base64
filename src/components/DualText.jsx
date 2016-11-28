@@ -4,6 +4,8 @@ import SingleText from './SingleText';
 const DualText = ({
 	valueLeft,
 	valueRight,
+	placeholderLeft,
+	placeholderRight,
 	onChangeLeft,
 	onChangeRight,
 	primaryLeft,
@@ -19,12 +21,14 @@ const DualText = ({
 				onChange={ onChangeLeft }
 				primary={ primaryLeft }
 				danger={ dangerLeft }
+				placeholder={ placeholderLeft }
 			/>
 			<SingleText
 				value={ valueRight }
 				onChange={ onChangeRight }
 				primary={ primaryRight }
 				danger={ dangerRight }
+				placeholder={ placeholderRight }
 			/>
 		</div>
 	);
@@ -33,6 +37,8 @@ const DualText = ({
 DualText.propTypes = {
 	valueLeft: PropTypes.string,
 	valueRight: PropTypes.string,
+	placeholderLeft: PropTypes.string,
+	placeholderRight: PropTypes.string,
 	onChangeLeft: PropTypes.func,
 	onChangeRight: PropTypes.func,
 	primaryLeft: PropTypes.bool,

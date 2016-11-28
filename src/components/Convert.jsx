@@ -32,14 +32,14 @@ export default class Convert extends Component {
 
 	getValueLeft () {
 		if (this.state.calculateLeft) {
-			return btoa(this.state.valueRight);
+			return atob(this.state.valueRight);
 		}
 		return this.state.valueLeft;
 	}
 
 	getValueRight () {
 		if (this.state.calculateRight) {
-			return atob(this.state.valueLeft);
+			return btoa(this.state.valueLeft);
 		}
 		return this.state.valueRight;
 	}
@@ -47,13 +47,19 @@ export default class Convert extends Component {
 	render () {
 		const valueLeft = this.getValueLeft();
 		const valueRight = this.getValueRight();
+		const { calculateLeft, calculateRight } = this.state;
 		return (
 			<DualText
 				valueLeft={ valueLeft }
 				onChangeLeft={ this.handleChangeLeft }
+				placeholderLeft="Enter text&hellip;"
+
 				valueRight={ valueRight }
 				onChangeRight={ this.handleChangeRight }
-				primaryLeft
+				placeholderRight="Enter base 64&hellip;"
+
+				primaryLeft={ calculateRight }
+				primaryRight={ calculateLeft }
 			/>
 		);
 	}
