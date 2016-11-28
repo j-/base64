@@ -5,6 +5,10 @@ export default combineReducers({
 	list,
 });
 
+export const getListLength = (state) => (
+	listModule.getListLength(state.list)
+);
+
 export const getValueText = (state, index) => (
 	listModule.getValueText(state.list, index)
 );

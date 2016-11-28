@@ -19,6 +19,10 @@ export default (state = DEFAULT_STATE, action) => {
 	}
 };
 
+export const getListLength = (state) => (
+	state.length
+);
+
 export const getValueText = (state, index) => (
 	state[index] && state[index].valueText || null
 );
