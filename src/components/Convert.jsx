@@ -5,61 +5,61 @@ export default class Convert extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			valueLeft: '',
-			valueRight: '',
-			calculateLeft: false,
-			calculateRight: false,
+			valueText: '',
+			valueBase64: '',
+			calculateText: false,
+			calculateBase64: false,
 		};
-		this.handleChangeLeft = this.handleChangeLeft.bind(this);
-		this.handleChangeRight = this.handleChangeRight.bind(this);
+		this.handleChangeText = this.handleChangeText.bind(this);
+		this.handleChangeBase64 = this.handleChangeBase64.bind(this);
 	}
 
-	handleChangeLeft (valueLeft) {
+	handleChangeText (valueText) {
 		this.setState({
-			valueLeft,
-			calculateLeft: false,
-			calculateRight: true,
+			valueText,
+			calculateText: false,
+			calculateBase64: true,
 		});
 	}
 
-	handleChangeRight (valueRight) {
+	handleChangeBase64 (valueBase64) {
 		this.setState({
-			valueRight,
-			calculateLeft: true,
-			calculateRight: false,
+			valueBase64,
+			calculateText: true,
+			calculateBase64: false,
 		});
 	}
 
-	getValueLeft () {
-		if (this.state.calculateLeft) {
-			return atob(this.state.valueRight);
+	getValueText () {
+		if (this.state.calculateText) {
+			return atob(this.state.valueBase64);
 		}
-		return this.state.valueLeft;
+		return this.state.valueText;
 	}
 
-	getValueRight () {
-		if (this.state.calculateRight) {
-			return btoa(this.state.valueLeft);
+	getValueBase64 () {
+		if (this.state.calculateBase64) {
+			return btoa(this.state.valueText);
 		}
-		return this.state.valueRight;
+		return this.state.valueBase64;
 	}
 
 	render () {
-		const valueLeft = this.getValueLeft();
-		const valueRight = this.getValueRight();
-		const { calculateLeft, calculateRight } = this.state;
+		const valueText = this.getValueText();
+		const valueBase64 = this.getValueBase64();
+		const { calculateText, calculateBase64 } = this.state;
 		return (
 			<DualText
-				valueLeft={ valueLeft }
-				onChangeLeft={ this.handleChangeLeft }
+				valueLeft={ valueText }
+				onChangeLeft={ this.handleChangeText }
 				placeholderLeft="Enter text&hellip;"
 
-				valueRight={ valueRight }
-				onChangeRight={ this.handleChangeRight }
+				valueRight={ valueBase64 }
+				onChangeRight={ this.handleChangeBase64 }
 				placeholderRight="Enter base 64&hellip;"
 
-				primaryLeft={ calculateRight }
-				primaryRight={ calculateLeft }
+				primaryLeft={ calculateBase64 }
+				primaryRight={ calculateText }
 			/>
 		);
 	}
