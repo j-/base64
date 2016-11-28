@@ -17,7 +17,7 @@ const DualText = ({
 	...props
 }) => {
 	return (
-		<FlexContainer alignContent="space-between" alignItems="stretch" { ...props }>
+		<FlexContainer alignContent="space-between" alignItems="stretch" style={{ height: 150 }} { ...props }>
 			<FlexItem flexGrow={ 20 }>
 				<SingleText
 					value={ valueLeft }
@@ -25,7 +25,7 @@ const DualText = ({
 					primary={ primaryLeft }
 					danger={ dangerLeft }
 					placeholder={ placeholderLeft }
-					style={{ width: '100%' }}
+					style={{ width: '100%', height: '100%', resize: 'none' }}
 				/>
 			</FlexItem>
 			<FlexItem flexGrow={ 1 } />
@@ -36,7 +36,7 @@ const DualText = ({
 					primary={ primaryRight }
 					danger={ dangerRight }
 					placeholder={ placeholderRight }
-					style={{ width: '100%' }}
+					style={{ width: '100%', height: '100%', resize: 'none' }}
 				/>
 			</FlexItem>
 		</FlexContainer>
