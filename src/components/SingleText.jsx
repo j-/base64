@@ -23,8 +23,8 @@ const SingleText = ({
 };
 
 SingleText.propTypes = {
-	primary: PropTypes.bool,
-	danger: PropTypes.bool,
+	primary: PropTypes.any,
+	danger: PropTypes.any,
 	onChange: PropTypes.func,
 	value: PropTypes.string,
 };

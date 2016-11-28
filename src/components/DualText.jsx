@@ -50,10 +50,10 @@ DualText.propTypes = {
 	placeholderRight: PropTypes.string,
 	onChangeLeft: PropTypes.func,
 	onChangeRight: PropTypes.func,
-	primaryLeft: PropTypes.bool,
-	primaryRight: PropTypes.bool,
-	dangerLeft: PropTypes.bool,
-	dangerRight: PropTypes.bool,
+	primaryLeft: PropTypes.any,
+	primaryRight: PropTypes.any,
+	dangerLeft: PropTypes.any,
+	dangerRight: PropTypes.any,
 };
 
 export default DualText;
