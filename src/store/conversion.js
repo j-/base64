@@ -1,3 +1,6 @@
+import base64 from 'base-64';
+import utf8 from 'utf8';
+
 import {
 	SET_TEXT,
 	SET_BASE64,
@@ -16,7 +19,7 @@ const setText = (state, valueText) => {
 	let calculatedBase64 = null;
 	let didError = false;
 	try {
-		calculatedBase64 = btoa(valueText);
+		calculatedBase64 = base64.encode(utf8.encode(valueText));
 	} catch (err) {
 		didError = true;
 	}
@@ -35,7 +38,7 @@ const setBase64 = (state, valueBase64) => {
 	let calculatedText = null;
 	let didError = false;
 	try {
-		calculatedText = atob(valueBase64);
+		calculatedText = utf8.decode(base64.decode(valueBase64));
 	} catch (err) {
 		didError = true;
 	}
