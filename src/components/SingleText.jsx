@@ -1,6 +1,14 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
+const stopPropagation = (e) => {
+	// Allow event to be handled by the component
+	// only if it is actually in focus
+	if (e.target === document.activeElement) {
+		e.stopPropagation();
+	}
+};
+
 const SingleText = ({
 	primary,
 	danger,
@@ -16,6 +24,7 @@ const SingleText = ({
 		<textarea
 			className={ className }
 			onChange={ (e) => onChange(e.target.value) }
+			onPaste={ stopPropagation }
 			value={ value || '' }
 			{ ...props }
 		/>
