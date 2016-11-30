@@ -5,17 +5,17 @@ export default class App extends Component {
 	constructor (props) {
 		super(props);
 		this.handlePaste = this.handlePaste.bind(this);
-		this.handleKeypress = this.handleKeypress.bind(this);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
 
 	componentDidMount () {
 		window.addEventListener('paste', this.handlePaste);
-		window.addEventListener('keypress', this.handleKeypress);
+		window.addEventListener('keypress', this.handleKeyPress);
 	}
 
 	componentWillUnmount () {
 		window.removeEventListener('paste', this.handlePaste);
-		window.removeEventListener('keypress', this.handleKeypress);
+		window.removeEventListener('keypress', this.handleKeyPress);
 	}
 
 	handlePaste (e) {
@@ -28,8 +28,8 @@ export default class App extends Component {
 		}
 	}
 
-	handleKeypress (e) {
-		this.props.onKeypress(e.key);
+	handleKeyPress (e) {
+		this.props.onKeyPress(e.key);
 	}
 
 	render () {
@@ -44,5 +44,5 @@ export default class App extends Component {
 
 App.propTypes = {
 	onPaste: PropTypes.func.isRequired,
-	onKeypress: PropTypes.func.isRequired,
+	onKeyPress: PropTypes.func.isRequired,
 };
