@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ConversionList from './ConversionListContainer';
 
-const App = () => (
-	<div className="app">
-		<h1>Base 64 Encode/Decode</h1>
-		<ConversionList />
-	</div>
-);
+export default class App extends Component {
+	constructor (props) {
+		super(props);
+		this.handlePaste = this.handlePaste.bind(this);
+	}
 
-export default App;
+	componentDidMount () {
+		window.addEventListener('paste', this.handlePaste);
+	}
+
+	componentWillUnmount () {
+		window.removeEventListener('paste', this.handlePaste);
+	}
+
+	handlePaste (e) {
+		const clipboard = e.clipboardData;
+		const data = clipboard.getData(clipboard.items[0].type);
+		this.props.onPaste(data);
+	}
+
+	render () {
+		return (
+			<div className="app">
+				<h1>Base 64 Encode/Decode</h1>
+				<ConversionList />
+			</div>
+		);
+	}
+}
+
+App.propTypes = {
+	onPaste: PropTypes.func.isRequired,
+};
