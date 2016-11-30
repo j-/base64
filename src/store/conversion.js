@@ -4,6 +4,8 @@ import utf8 from 'utf8';
 import {
 	SET_TEXT,
 	SET_BASE64,
+	ADD_TEXT,
+	ADD_BASE64,
 } from './types';
 
 const DEFAULT_STATE = {
@@ -56,8 +58,10 @@ const setBase64 = (state, valueBase64) => {
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_TEXT:
+		case ADD_TEXT:
 			return setText(state, action.value);
 		case SET_BASE64:
+		case ADD_BASE64:
 			return setBase64(state, action.value);
 		default:
 			return state;
