@@ -16,15 +16,18 @@ import {
 	setBase64,
 } from '../store/actions';
 
-const mapStateToProps = (state, { index }) => ({
-	valueText: getValueText(state, index),
-	valueBase64: getValueBase64(state, index),
-	calculatedText: getCalculatedText(state, index),
-	calculatedBase64: getCalculatedBase64(state, index),
-	invalidText: getInvalidText(state, index),
-	invalidBase64: getInvalidBase64(state, index),
-	autoFocus: index < getListLength(state),
-});
+const mapStateToProps = (state, { index }) => {
+	const listLength = getListLength(state);
+	return {
+		valueText: getValueText(state, index),
+		valueBase64: getValueBase64(state, index),
+		calculatedText: getCalculatedText(state, index),
+		calculatedBase64: getCalculatedBase64(state, index),
+		invalidText: getInvalidText(state, index),
+		invalidBase64: getInvalidBase64(state, index),
+		autoFocus: index < listLength || listLength === 0,
+	};
+};
 
 const mapDispatchToProps = (dispatch, { index }) => ({
 	setText: (value) => dispatch(setText(index, value)),
