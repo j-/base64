@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Ribbon from './Ribbon';
 import ConversionList from './ConversionListContainer';
 
 export default class App extends Component {
@@ -40,6 +41,7 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<h1>Base 64 Encode/Decode</h1>
+				<Ribbon />
 				<ConversionList />
 			</div>
 		);
