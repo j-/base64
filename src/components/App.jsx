@@ -16,9 +16,13 @@ export default class App extends Component {
 	}
 
 	handlePaste (e) {
-		const clipboard = e.clipboardData;
-		const data = clipboard.getData(clipboard.items[0].type);
-		this.props.onPaste(data);
+		try {
+			const clipboard = e.clipboardData;
+			const data = clipboard.getData(clipboard.items[0].type);
+			this.props.onPaste(data);
+		} catch (err) {
+			// Ignore errors
+		}
 	}
 
 	render () {
