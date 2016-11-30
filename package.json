@@ -1,6 +1,6 @@
 {
   "name": "base64",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Base 64 encoding/decoding tool",
   "main": "index.js",
   "scripts": {
