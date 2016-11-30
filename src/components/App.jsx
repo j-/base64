@@ -29,6 +29,10 @@ export default class App extends Component {
 	}
 
 	handleKeyPress (e) {
+		if (e.key === 'Enter' && e.ctrlKey) {
+			// Ignore Ctrl+Enter presses
+			return;
+		}
 		this.props.onKeyPress(e.key);
 	}
 
