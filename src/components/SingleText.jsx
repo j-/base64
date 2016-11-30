@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import FocusableTextarea from './FocusableTextarea';
 import classNames from 'classnames';
 
 const stopPropagation = (e) => {
@@ -21,10 +22,11 @@ const SingleText = ({
 		'pt-intent-primary': primary && !danger,
 	});
 	return (
-		<textarea
+		<FocusableTextarea
 			className={ className }
 			onChange={ (e) => onChange(e.target.value) }
 			onPaste={ stopPropagation }
+			onKeyPress={ stopPropagation }
 			value={ value || '' }
 			{ ...props }
 		/>

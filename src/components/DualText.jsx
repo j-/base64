@@ -14,6 +14,7 @@ const DualText = ({
 	primaryRight,
 	dangerLeft,
 	dangerRight,
+	autoFocus,
 	...props
 }) => {
 	return (
@@ -26,6 +27,7 @@ const DualText = ({
 					danger={ dangerLeft }
 					placeholder={ placeholderLeft }
 					style={{ width: '100%', height: '100%', resize: 'none' }}
+					autoFocus={ autoFocus }
 				/>
 			</FlexItem>
 			<FlexItem flexBasis={ '5%' } />
@@ -54,6 +56,7 @@ DualText.propTypes = {
 	primaryRight: PropTypes.any,
 	dangerLeft: PropTypes.any,
 	dangerRight: PropTypes.any,
+	autoFocus: PropTypes.any,
 };
 
 export default DualText;

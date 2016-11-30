@@ -2,6 +2,7 @@ import Convert from './Convert';
 import { connect } from 'react-redux';
 
 import {
+	getListLength,
 	getValueText,
 	getValueBase64,
 	getCalculatedText,
@@ -22,6 +23,7 @@ const mapStateToProps = (state, { index }) => ({
 	calculatedBase64: getCalculatedBase64(state, index),
 	invalidText: getInvalidText(state, index),
 	invalidBase64: getInvalidBase64(state, index),
+	autoFocus: index < getListLength(state),
 });
 
 const mapDispatchToProps = (dispatch, { index }) => ({

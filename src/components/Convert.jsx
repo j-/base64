@@ -10,8 +10,10 @@ const Convert = ({
 	invalidBase64,
 	setText,
 	setBase64,
+	autoFocus,
 }) => (
 	<DualText
+		autoFocus={ autoFocus }
 		// Text props
 		valueLeft={ calculatedText || valueText }
 		onChangeLeft={ setText }

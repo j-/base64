@@ -7,9 +7,10 @@ import {
 
 const mapStateToProps = null;
 
-const mapDispatchToProps = {
-	onPaste: addText,
-};
+const mapDispatchToProps = (dispatch) => ({
+	onPaste: () => dispatch(addText()),
+	onKeypress: () => dispatch(addText()),
+});
 
 export default connect(
 	mapStateToProps,
