@@ -8,27 +8,37 @@ import {
 
 export const setText = (index, value) => ({
 	type: SET_TEXT,
-	index,
-	value,
+	data: {
+		index,
+		value,
+	},
 });
 
 export const setBase64 = (index, value) => ({
 	type: SET_BASE64,
-	index,
-	value,
+	data: {
+		index,
+		value,
+	},
 });
 
 export const addText = (value) => ({
 	type: ADD_TEXT,
-	value,
+	data: {
+		value,
+	},
 });
 
 export const addBase64 = (value) => ({
 	type: ADD_BASE64,
-	value,
+	data: {
+		value,
+	},
 });
 
 export const removeListItem = (index) => ({
 	type: REMOVE_LIST_ITEM,
-	index,
+	data: {
+		index,
+	},
 });

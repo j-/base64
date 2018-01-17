@@ -15,7 +15,7 @@ export default (state = DEFAULT_STATE, action) => {
 		case SET_TEXT:
 		case SET_BASE64: {
 			const result = [...state];
-			result[action.index] = handler(state[action.index], action);
+			result[action.data.index] = handler(state[action.data.index], action);
 			return result;
 		}
 		case ADD_TEXT:
@@ -27,7 +27,7 @@ export default (state = DEFAULT_STATE, action) => {
 		}
 		case REMOVE_LIST_ITEM: {
 			const result = [...state];
-			result.splice(action.index, 1);
+			result.splice(action.data.index, 1);
 			return result;
 		}
 		default:

@@ -59,10 +59,10 @@ export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_TEXT:
 		case ADD_TEXT:
-			return setText(state, action.value);
+			return setText(state, action.data.value);
 		case SET_BASE64:
 		case ADD_BASE64:
-			return setBase64(state, action.value);
+			return setBase64(state, action.data.value);
 		default:
 			return state;
 	}
