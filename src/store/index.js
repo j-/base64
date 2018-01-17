@@ -32,3 +32,7 @@ export const getInvalidText = (state, index) => (
 export const getInvalidBase64 = (state, index) => (
 	listModule.getInvalidBase64(state.list, index)
 );
+
+export const useUtf8Conversion = (state, index) => (
+	listModule.useUtf8Conversion(state.list, index)
+);

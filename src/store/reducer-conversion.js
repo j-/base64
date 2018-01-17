@@ -13,13 +13,17 @@ const DEFAULT_STATE = {
 	calculatedBase64: null,
 	invalidText: false,
 	invalidBase64: false,
+	useUtf8Conversion: true,
 };
 
-const setText = (state, valueText) => {
+const setText = (state, valueText, convert) => {
 	let calculatedBase64 = null;
 	let didError = false;
+	if (convert) {
+		valueText = utf8.encode(valueText);
+	}
 	try {
-		calculatedBase64 = base64.encode(utf8.encode(valueText));
+		calculatedBase64 = base64.encode(valueText);
 	} catch (err) {
 		didError = true;
 	}
@@ -34,13 +38,16 @@ const setText = (state, valueText) => {
 	};
 };
 
-const setBase64 = (state, valueBase64) => {
+const setBase64 = (state, valueBase64, convert) => {
 	let calculatedText = null;
 	let didError = false;
 	try {
-		calculatedText = utf8.decode(base64.decode(valueBase64));
+		calculatedText = base64.decode(valueBase64);
 	} catch (err) {
 		didError = true;
+	}
+	if (convert) {
+		calculatedText = utf8.decode(calculatedText);
 	}
 	return {
 		...state,
@@ -56,9 +63,9 @@ const setBase64 = (state, valueBase64) => {
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_TEXT:
-			return setText(state, action.data.value);
+			return setText(state, action.data.value, action.data.convert);
 		case SET_BASE64:
-			return setBase64(state, action.data.value);
+			return setBase64(state, action.data.value, action.data.convert);
 		default:
 			return state;
 	}

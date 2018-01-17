@@ -55,3 +55,7 @@ export const getInvalidText = (state, index) => (
 export const getInvalidBase64 = (state, index) => (
 	state[index] && state[index].invalidBase64 || false
 );
+
+export const useUtf8Conversion = (state, index) => (
+	state[index] && state[index].useUtf8Conversion || false
+);
