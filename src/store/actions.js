@@ -1,8 +1,6 @@
 import {
 	SET_TEXT,
 	SET_BASE64,
-	ADD_TEXT,
-	ADD_BASE64,
 	REMOVE_LIST_ITEM,
 } from './types';
 
@@ -18,20 +16,6 @@ export const setBase64 = (index, value) => ({
 	type: SET_BASE64,
 	data: {
 		index,
-		value,
-	},
-});
-
-export const addText = (value) => ({
-	type: ADD_TEXT,
-	data: {
-		value,
-	},
-});
-
-export const addBase64 = (value) => ({
-	type: ADD_BASE64,
-	data: {
 		value,
 	},
 });
