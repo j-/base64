@@ -6,7 +6,7 @@ import {
 	REMOVE_LIST_ITEM,
 } from './types';
 
-import handler from './conversion';
+import handler from './reducer-conversion';
 
 const DEFAULT_STATE = [];
 
