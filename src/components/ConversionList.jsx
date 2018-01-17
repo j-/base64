@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Convert from './ConvertContainer';
-import ConversionActions from './ConversionActionsContainer';
+import Convert from '../containers/Convert';
+import ConversionActions from '../containers/ConversionActions';
 
 const ConversionList = ({
 	count,

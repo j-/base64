@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import Convert from './ConvertContainer';
+import Convert from '../containers/Convert';
 
 const ConversionActionsContainer = (props) => (
 	<div className="conversion-list-item-actions" { ...props } />

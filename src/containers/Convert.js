@@ -1,4 +1,4 @@
-import Convert from './Convert';
+import Convert from '../components/Convert';
 import { connect } from 'react-redux';
 
 import {

@@ -1,4 +1,4 @@
-import ConversionActions from './ConversionActions';
+import ConversionActions from '../components/ConversionActions';
 import { connect } from 'react-redux';
 
 import {

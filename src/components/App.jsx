@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Ribbon from './Ribbon';
-import ConversionList from './ConversionListContainer';
+import ConversionList from '../containers/ConversionList';
 
 export default class App extends Component {
 	constructor (props) {
