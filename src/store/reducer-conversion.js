@@ -2,12 +2,12 @@ import base64 from 'base-64';
 import utf8 from 'utf8';
 
 import {
-	SET_TEXT,
-	SET_BASE64,
-	SET_UTF8_CONVERSION,
-	ADD_TEXT,
-	ADD_BASE64,
-} from './types';
+	isActionSetText,
+	isActionSetBase64,
+	isActionSetUtf8Conversion,
+	isActionAddText,
+	isActionAddBase64,
+} from './actions';
 
 const DEFAULT_STATE = {
 	valueText: null,
@@ -60,20 +60,21 @@ const setBase64 = (state, valueBase64, convert = true) => {
 };
 
 export default (state = DEFAULT_STATE, action) => {
-	switch (action.type) {
-		case ADD_TEXT:
-		case SET_TEXT:
+	if (isActionAddText(action) || isActionSetText(action)) {
 		return setText(state, action.data.value, action.data.convert);
-		case ADD_BASE64:
-		case SET_BASE64:
-			return setBase64(state, action.data.value, action.data.convert);
-		case SET_UTF8_CONVERSION:
-			if (state.valueText !== null) {
-				return setText(state, state.valueText, action.data.convert);
-			} else {
-				return setBase64(state, state.valueBase64, action.data.convert);
-			}
-		default:
-			return state;
 	}
+
+	if (isActionAddBase64(action) || isActionSetBase64(action)) {
+		return setBase64(state, action.data.value, action.data.convert);
+	}
+
+	if (isActionSetUtf8Conversion(action)) {
+		if (state.valueText !== null) {
+			return setText(state, state.valueText, action.data.convert);
+		} else {
+			return setBase64(state, state.valueBase64, action.data.convert);
+		}
+	}
+
+	return state;
 };

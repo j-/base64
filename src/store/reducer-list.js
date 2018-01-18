@@ -1,40 +1,37 @@
 import {
-	SET_TEXT,
-	SET_BASE64,
-	SET_UTF8_CONVERSION,
-	ADD_TEXT,
-	ADD_BASE64,
-	REMOVE_LIST_ITEM,
-} from './types';
+	isActionSetText,
+	isActionSetBase64,
+	isActionSetUtf8Conversion,
+	isActionAddText,
+	isActionAddBase64,
+	isActionRemoveListItem,
+} from './actions';
 
 import handler from './reducer-conversion';
 
 const DEFAULT_STATE = [];
 
 export default (state = DEFAULT_STATE, action) => {
-	switch (action.type) {
-		case SET_TEXT:
-		case SET_BASE64:
-		case SET_UTF8_CONVERSION: {
-			const result = [...state];
-			result[action.data.index] = handler(state[action.data.index], action);
-			return result;
-		}
-		case ADD_TEXT:
-		case ADD_BASE64: {
-			return [
-				...state,
-				handler(null, action),
-			];
-		}
-		case REMOVE_LIST_ITEM: {
-			const result = [...state];
-			result.splice(action.data.index, 1);
-			return result;
-		}
-		default:
-			return state;
+	if (isActionSetText(action) || isActionSetBase64(action) || isActionSetUtf8Conversion(action)) {
+		const result = [...state];
+		result[action.data.index] = handler(state[action.data.index], action);
+		return result;
 	}
+
+	if (isActionAddText(action) || isActionAddBase64(action)) {
+		return [
+			...state,
+			handler(null, action),
+		];
+	}
+
+	if (isActionRemoveListItem(action)) {
+		const result = [...state];
+		result.splice(action.data.index, 1);
+		return result;
+	}
+
+	return state;
 };
 
 export const getListLength = (state) => (
