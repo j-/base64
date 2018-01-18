@@ -19,7 +19,7 @@ const DEFAULT_STATE = {
 	useUtf8Conversion: true,
 };
 
-const setText = (state, valueText, convert) => {
+const setText = (state, valueText, convert = true) => {
 	let calculatedBase64 = null;
 	let didError = false;
 	try {
@@ -39,7 +39,7 @@ const setText = (state, valueText, convert) => {
 	};
 };
 
-const setBase64 = (state, valueBase64, convert) => {
+const setBase64 = (state, valueBase64, convert = true) => {
 	let calculatedText = null;
 	let didError = false;
 	try {
