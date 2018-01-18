@@ -42,6 +42,8 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<h1>Base 64 Encode/Decode</h1>
+				<br />
+				<br />
 				<Ribbon />
 				<ConversionList />
 			</div>
