@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Ribbon from './Ribbon';
 import ConversionList from '../containers/ConversionList';
 
-export default class App extends Component {
+export default class App extends React.Component {
 	constructor (props) {
 		super(props);
 		this.handlePaste = this.handlePaste.bind(this);

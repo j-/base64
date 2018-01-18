@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-export default class FocusableTextarea extends Component {
+export default class FocusableTextarea extends React.Component {
 	componentWillReceiveProps (props) {
 		if (props.autoFocus) {
 			ReactDOM.findDOMNode(this.refs.textarea).focus();
