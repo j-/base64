@@ -9,6 +9,7 @@ import {
 	getCalculatedBase64,
 	getInvalidText,
 	getInvalidBase64,
+	useUtf8Conversion,
 } from '../store';
 
 import {
@@ -26,12 +27,13 @@ const mapStateToProps = (state, { index }) => {
 		invalidText: getInvalidText(state, index),
 		invalidBase64: getInvalidBase64(state, index),
 		autoFocus: index < listLength || listLength === 0,
+		useUtf8Conversion: useUtf8Conversion(state, index),
 	};
 };
 
 const mapDispatchToProps = (dispatch, { index }) => ({
-	setText: (value) => dispatch(setText(index, value)),
-	setBase64: (value) => dispatch(setBase64(index, value)),
+	setText: (value, convert) => dispatch(setText(index, value, convert)),
+	setBase64: (value, convert) => dispatch(setBase64(index, value, convert)),
 });
 
 export default connect(

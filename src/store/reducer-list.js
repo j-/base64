@@ -1,8 +1,7 @@
 import {
 	SET_TEXT,
 	SET_BASE64,
-	ADD_TEXT,
-	ADD_BASE64,
+	SET_UTF8_CONVERSION,
 	REMOVE_LIST_ITEM,
 } from './types';
 
@@ -13,7 +12,8 @@ const DEFAULT_STATE = [];
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 		case SET_TEXT:
-		case SET_BASE64: {
+		case SET_BASE64:
+		case SET_UTF8_CONVERSION: {
 			const result = [...state];
 			result[action.data.index] = handler(state[action.data.index], action);
 			return result;
@@ -57,5 +57,5 @@ export const getInvalidBase64 = (state, index) => (
 );
 
 export const useUtf8Conversion = (state, index) => (
-	state[index] && state[index].useUtf8Conversion || false
+	state[index] ? state[index].useUtf8Conversion : true
 );

@@ -2,6 +2,7 @@ import {
 	SET_TEXT,
 	SET_BASE64,
 	REMOVE_LIST_ITEM,
+	SET_UTF8_CONVERSION,
 } from './types';
 
 export const setText = (index, value, convert = false) => ({
@@ -26,5 +27,13 @@ export const removeListItem = (index) => ({
 	type: REMOVE_LIST_ITEM,
 	data: {
 		index,
+	},
+});
+
+export const setUtf8Conversion = (index, convert) => ({
+	type: SET_UTF8_CONVERSION,
+	data: {
+		index,
+		convert,
 	},
 });

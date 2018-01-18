@@ -11,18 +11,19 @@ const Convert = ({
 	setText,
 	setBase64,
 	autoFocus,
+	useUtf8Conversion,
 }) => (
 	<DualText
 		autoFocus={ autoFocus }
 		// Text props
 		valueLeft={ calculatedText || valueText }
-		onChangeLeft={ setText }
+		onChangeLeft={ (value) => setText(value, useUtf8Conversion) }
 		placeholderLeft="Enter text&hellip;"
 		primaryLeft={ calculatedBase64 }
 		dangerLeft={ invalidText }
 		// Base 64 props
 		valueRight={ calculatedBase64 || valueBase64 }
-		onChangeRight={ setBase64 }
+		onChangeRight={ (value) => setBase64(value, useUtf8Conversion) }
 		placeholderRight="Enter base 64&hellip;"
 		primaryRight={ calculatedText }
 		dangerRight={ invalidBase64 }
