@@ -1,6 +1,8 @@
 import {
 	SET_TEXT,
 	SET_BASE64,
+	ADD_TEXT,
+	ADD_BASE64,
 	REMOVE_LIST_ITEM,
 	SET_UTF8_CONVERSION,
 } from './types';
@@ -20,6 +22,20 @@ export const setBase64 = (index, value, convert = false) => ({
 		index,
 		value,
 		convert,
+	},
+});
+
+export const addText = (value) => ({
+	type: ADD_TEXT,
+	data: {
+		value,
+	},
+});
+
+export const addBase64 = (value) => ({
+	type: ADD_BASE64,
+	data: {
+		value,
 	},
 });
 

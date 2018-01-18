@@ -2,6 +2,8 @@ import {
 	SET_TEXT,
 	SET_BASE64,
 	SET_UTF8_CONVERSION,
+	ADD_TEXT,
+	ADD_BASE64,
 	REMOVE_LIST_ITEM,
 } from './types';
 
@@ -17,6 +19,13 @@ export default (state = DEFAULT_STATE, action) => {
 			const result = [...state];
 			result[action.data.index] = handler(state[action.data.index], action);
 			return result;
+		}
+		case ADD_TEXT:
+		case ADD_BASE64: {
+			return [
+				...state,
+				handler(null, action),
+			];
 		}
 		case REMOVE_LIST_ITEM: {
 			const result = [...state];
