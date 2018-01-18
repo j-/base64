@@ -25,7 +25,7 @@ const SingleText = ({
 	return (
 		<FocusableTextarea
 			className={ className }
-			onChange={ (e) => onChange(e.target.value) }
+			onChange={ (e) => onChange(e.currentTarget.value) }
 			onPaste={ stopPropagation }
 			onKeyPress={ stopPropagation }
 			value={ value || '' }
