@@ -17,18 +17,18 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				loader: 'babel',
+				loader: 'babel-loader',
 				include: [
 					resolve('./src'),
 				],
 				test: /\.jsx?$/,
 			},
 			{
-				loader: 'style!css!less',
+				loader: 'style-loader!css-loader!less-loader',
 				test: /\.(css|less)?$/,
 			},
 			{
-				loader: 'file',
+				loader: 'file-loader',
 				test: /\.(eot|ttf|woff)?$/,
 			},
 		],
