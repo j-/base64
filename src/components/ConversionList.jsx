@@ -9,7 +9,7 @@ const ConversionList = ({
 	const childElements = [];
 	for (let i = 0; i < count + 1; i++) {
 		childElements.push(
-			<div key={ i }>
+			<div className="ConversionList-item" key={ i }>
 				<ConversionActions
 					index={ i }
 					showChildren={ i < count }
@@ -18,7 +18,7 @@ const ConversionList = ({
 			</div>
 		);
 	}
-	return <div>{ childElements }</div>;
+	return <div className="ConversionList">{ childElements }</div>;
 };
 
 ConversionList.propTypes = {

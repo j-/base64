@@ -36,13 +36,14 @@ export default class App extends React.Component {
 			// Ignore Enter key presses
 			return;
 		}
-		e.preventDefault();
-		this.props.onKeyPress(e.key);
+		this.container
+			.querySelectorAll('.ConversionList-item:last-child textarea')[0]
+			.focus();
 	}
 
 	render () {
 		return (
-			<div className="app">
+			<div className="app" ref={ (el) => this.container = el }>
 				<h1>Base 64 Encode/Decode</h1>
 				<br />
 				<br />
@@ -55,5 +56,4 @@ export default class App extends React.Component {
 
 App.propTypes = {
 	onPaste: PropTypes.func.isRequired,
-	onKeyPress: PropTypes.func.isRequired,
 };
