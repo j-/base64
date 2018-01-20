@@ -1,14 +1,12 @@
-const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 const EnvironmentPlugin = webpack.EnvironmentPlugin;
 const HTMLPlugin = require('html-webpack-plugin');
 
-const resolve = (relative) => path.resolve(__dirname, relative);
-
 module.exports = {
-	entry: resolve('./src/index.jsx'),
+	entry: resolve(__dirname, './src/index.jsx'),
 	output: {
-		path: resolve('./dist'),
+		path: resolve(__dirname, './dist'),
 		filename: 'bundle.js',
 	},
 	resolve: {
@@ -19,7 +17,7 @@ module.exports = {
 			{
 				loader: 'babel-loader',
 				include: [
-					resolve('./src'),
+					resolve(__dirname, './src'),
 				],
 				test: /\.jsx?$/,
 			},
@@ -35,7 +33,7 @@ module.exports = {
 	},
 	plugins: [
 		new HTMLPlugin({
-			template: resolve('./src/index.html'),
+			template: resolve(__dirname, './src/index.html'),
 		}),
 		new EnvironmentPlugin({
 			'NODE_ENV': 'development',
