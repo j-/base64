@@ -24,6 +24,7 @@ export default class App extends React.Component {
 		try {
 			const clipboard = e.clipboardData;
 			const data = clipboard.getData(clipboard.items[0].type);
+			e.preventDefault();
 			this.props.onPaste(data);
 		} catch (err) {
 			// Ignore errors
@@ -35,6 +36,7 @@ export default class App extends React.Component {
 			// Ignore Enter key presses
 			return;
 		}
+		e.preventDefault();
 		this.props.onKeyPress(e.key);
 	}
 

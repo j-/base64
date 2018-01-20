@@ -8,8 +8,8 @@ import {
 const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => ({
-	onPaste: () => dispatch(addText('')),
-	onKeyPress: () => dispatch(addText('')),
+	onPaste: (value) => dispatch(addText(value)),
+	onKeyPress: (value) => dispatch(addText(value)),
 });
 
 export default connect(
