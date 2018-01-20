@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const DefinePlugin = webpack.DefinePlugin;
+const EnvironmentPlugin = webpack.EnvironmentPlugin;
 const HTMLPlugin = require('html-webpack-plugin');
 
 const resolve = (relative) => path.resolve(__dirname, relative);
@@ -37,10 +37,8 @@ module.exports = {
 		new HTMLPlugin({
 			template: resolve('./src/index.html'),
 		}),
-		new DefinePlugin({
-			'process.env': {
-				'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-			},
+		new EnvironmentPlugin({
+			'NODE_ENV': 'development',
 		}),
 	],
 	devtool: 'source-map',
